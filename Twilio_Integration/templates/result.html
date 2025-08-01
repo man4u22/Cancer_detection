@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #f9f9f9, #eceff1);
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #007BFF;
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .nav-link {
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .result-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+        }
+
+        .result-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .result-heading {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .result-heading .cancer {
+            color: #e74c3c; /* Red for detected cancer */
+        }
+
+        .result-heading .no-cancer {
+            color: #2ecc71; /* Green for no cancer */
+        }
+
+        .sub-heading {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #555;
+        }
+
+        .image-wrapper {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .uploaded-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .alert-danger {
+            background-color: #fdecea;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        .alert-success {
+            background-color: #eafaf1;
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            margin: 10px 5px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #f4f4f4;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e2e2e2;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('detect_skin_cancer') }}" class="nav-link">Detect Skin Cancer</a>
+            <a href="{{ url_for('book_appointment') }}" class="nav-link">Book Appointment</a>
+            <a href="{{ url_for('admin') }}" class="nav-link">Admin Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="result-wrapper">
+            <div class="result-container">
+                <h1 class="result-heading">Prediction Result: 
+                    <span class="{{ result|lower }}">{{ result }}</span>
+                </h1>
+                <h3 class="sub-heading">Uploaded Image:</h3>
+                <div class="image-wrapper">
+                    <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded Image" class="uploaded-image">
+                </div>
+
+                {% if show_appointment %}
+                    <div class="alert alert-danger">
+                        <h2>Cancer detected. Please book an appointment!</h2>
+                        <a href="{{ url_for('book_appointment') }}" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                {% else %}
+                    <div class="alert alert-success">
+                        <h2>No cancer detected. Stay healthy!</h2>
+                    </div>
+                {% endif %}
+                
+                <div class="result-buttons">
+                    <a href="{{ url_for('detect_skin_cancer') }}" class="btn btn-secondary">Try Another Image</a>
+                    <a href="{{ url_for('home') }}" class="btn btn-secondary">Go to Home</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Melano Watch. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Admin Login</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('detect_skin_cancer') }}" class="nav-link">Detect Skin Cancer</a>
+            <a href="{{ url_for('book_appointment') }}" class="nav-link">Book Appointment</a>
+            <a href="{{ url_for('admin') }}" class="nav-link active">Admin Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2 class="form-title">Admin Login</h2>
+            <form method="POST" action="{{ url_for('admin') }}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <div class="form-buttons">
+                    <button type="submit" class="btn">Login</button>
+                    <a href="{{ url_for('home') }}" class="btn-secondary">Go to Home</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Melano Watch. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

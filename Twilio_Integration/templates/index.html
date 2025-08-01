@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melano Watch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Top ribbon (nav bar) */
+        .navbar {
+            background: linear-gradient(90deg, #6A11CB, #2575FC); /* Gradient effect */
+            color: white;
+            padding: 20px 0;
+            width: 100%; /* Stretch across the page */
+            display: flex;
+            justify-content: center; /* Center items horizontally */
+            gap: 50px; /* Space between links */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s; /* Smooth transition on hover */
+        }
+
+        .navbar a:hover {
+            color: #FFD700; /* Gold hover effect */
+            transform: scale(1.1); /* Slight zoom */
+        }
+
+        /* Footer (bottom ribbon) */
+        footer {
+            background: linear-gradient(90deg, #2575FC, #6A11CB); /* Reverse gradient */
+            color: white;
+            padding: 20px 0;
+            width: 100%; /* Stretch across the page */
+            text-align: center;
+            position: relative; /* Ensure it doesn't overlap content */
+            bottom: 0;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2); /* Shadow on the top */
+        }
+
+        /* Body background */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #FDFCFB, #E2D1C3); /* Classy soft gradient */
+        }
+
+        /* Section headings */
+        h2 {
+            color: #333;
+            font-size: 28px;
+        }
+
+        /* Text and paragraphs */
+        p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Call-to-action button */
+        .cta-button {
+            padding: 12px 30px;
+            background: #FF6F61; /* Vibrant coral color */
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        .cta-button:hover {
+            background: #FF8E72; /* Slightly lighter coral on hover */
+            transform: scale(1.05); /* Slight zoom */
+        }
+
+        /* Classy smaller image */
+        img {
+            border: 3px solid #FFD700; /* Gold border */
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Glow effect */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('detect_skin_cancer') }}">Detect Skin Cancer</a>
+            <a href="{{ url_for('book_appointment') }}">Book Appointment</a>
+            <a href="{{ url_for('admin') }}">Admin Login</a>
+            <a href="{{ url_for('treatment') }}">Treatments</a> <!-- New Treatments link -->
+        </nav>
+    </header>
+
+    <div style="width: 60%; margin: 50px auto; text-align: center; line-height: 1.8;">
+        <main>
+            <section class="intro">
+                <h2 style="margin-bottom: 20px;">Welcome to Melano Watch</h2>
+                <p style="margin-bottom: 40px;">
+                    Stay ahead of skin concerns with Melano Watch. Detect potential skin cancer early and take control of 
+                    your skin health today. Our website not only helps you identify signs of skin cancer but also provides 
+                    facilities for treatment, connecting you with the best specialists in the field.
+                </p>
+            </section>
+
+            <section class="skin-cancer-info">
+                <h2 style="margin-bottom: 20px;">What Is Skin Cancer?</h2>
+                <p style="margin-bottom: 40px;">
+                    Skin cancer is the out-of-control growth of abnormal cells in the epidermis, the outermost skin layer, 
+                    caused by unrepaired DNA damage that triggers mutations. These mutations lead the skin cells to multiply 
+                    rapidly and form malignant tumors. The main types of skin cancer are basal cell carcinoma (BCC), squamous 
+                    cell carcinoma (SCC), melanoma, and Merkel cell carcinoma (MCC).
+                </p>
+
+                <h2 style="margin-bottom: 20px;">What Does Skin Cancer Look Like?</h2>
+                <p style="margin-bottom: 40px;">
+                    Skin cancers can appear differently depending on a person's skin tone, size, type of cancer, and location 
+                    on the body. To better understand what skin cancers can look like, visit our 
+                    <a href="https://www.skincancer.org/skin-cancer-information/skin-cancer-pictures/" target="_blank">Skin Cancer Pictures</a> page.
+                </p>
+
+                <h2 style="margin-bottom: 20px;">What Causes Skin Cancer?</h2>
+                <p style="margin-bottom: 40px;">
+                    The two main causes of skin cancer are harmful ultraviolet (UV) rays from the sun and the use of UV tanning beds. 
+                    The good news is that early detection allows for effective treatment, often with minimal scarring and a high 
+                    chance of elimination.
+                </p>
+
+                <div style="margin: 40px auto; width: 250px;">
+                    <img src="static/images/skin_cancer_example.jpg" alt="Skin Cancer Example">
+                </div>
+            </section>
+
+            <section class="about-website">
+                <h2 style="margin-bottom: 20px;">About Melano Watch</h2>
+                <p style="margin-bottom: 40px;">
+                    Melano Watch is designed to help you stay proactive about your skin health. Our AI-based system analyzes images 
+                    of skin lesions to detect potential skin cancer. If cancer is detected, we assist you in booking appointments 
+                    with qualified specialists to ensure you receive the best possible care. Early detection can save lives, and 
+                    we're here to support you every step of the way.
+                </p>
+            </section>
+
+            <section class="call-to-action">
+                <a href="{{ url_for('book_appointment') }}" class="cta-button">Book an Appointment Now</a>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2024 Melano Watch. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

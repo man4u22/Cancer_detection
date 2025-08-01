@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Success</title>
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #fdfbfb, #ebedee); /* Subtle gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        /* Card container */
+        .card {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Clean shadow */
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #2ecc71; /* Success green */
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            font-size: 16px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Home button */
+        a {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            background: #3498db; /* Vibrant blue */
+            color: white;
+            border-radius: 30px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        a:hover {
+            background: #2980b9; /* Darker blue on hover */
+            transform: translateY(-3px); /* Subtle lift effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Appointment Successfully Booked!</h1>
+        <p>Details of your appointment:</p>
+        <ul>
+            <li><strong>Name:</strong> {{ name }}</li>
+            <li><strong>Age:</strong> {{ age }}</li>
+            <li><strong>Gender:</strong> {{ gender }}</li>
+            <li><strong>Phone:</strong> {{ phone }}</li>
+            <li><strong>Appointment Date:</strong> {{ appointment_date }}</li>
+            <li><strong>Appointment Time:</strong> {{ appointment_time }}</li>
+        </ul>
+        <a href="{{ url_for('home') }}">Go to Home</a>
+    </div>
+</body>
+</html>

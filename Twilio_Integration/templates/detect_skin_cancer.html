@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+            <a href="{{ url_for('detect_skin_cancer') }}" class="nav-link active">Detect Skin Cancer</a>
+            <a href="{{ url_for('book_appointment') }}" class="nav-link">Book Appointment</a>
+            <a href="{{ url_for('admin') }}" class="nav-link">Admin Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h1 class="main-heading">Skin Cancer Detection</h1>
+            <p class="description">Upload an image to check for signs of skin cancer.</p>
+            <form action="{{ url_for('predict') }}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required class="file-input">
+                <div class="form-buttons">
+                    <button type="submit" class="btn">Upload</button>
+                    <a href="{{ url_for('home') }}" class="btn-secondary">Go to Home</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Melano Watch. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
